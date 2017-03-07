@@ -19,63 +19,84 @@ int main(int argc, const char * argv[]) {
 //C Code for command line input
             char inputChars[225];
             
-            printf("input a string:");
+            printf("input a string:\n");
             
             fgets(inputChars, 225, stdin);
             
             printf("your string is %s\n", inputChars);
             
             
-/*//Print Out Menu Of Options
-            int options;
-            
-            printf("Select Option:\n 1 for Operation 1 \n 2 for Operation 2 \n 3 for Operation 3 \n 4 for Operation 4 \n 5 for Operation 5 \n 6 for Operation 6");
-*/
- 
-            
-            
 //Convert to Objective-C Code and Ouput
             NSString *inputString = [NSString stringWithUTF8String:inputChars];
             
-            NSLog(@"input was: %@", inputString);
+            NSLog(@"input was: %@\n", inputString);
+            
+            
+//Print Out Menu Of Options
+            char inputOptions[2];
+            
+            printf("Select Option:\n 1 for Operation 1 \n 2 for Operation 2 \n 3 for Operation 3 \n 4 for Operation 4 \n 5 for Operation 5 \n 6 for Operation 6 \n");
+    
+            fgets(inputOptions, 2, stdin);
+ 
+            printf("You have selected Option: %s\n",inputOptions);
+
+
+        
+            
+//Change Input Options to Int
+            
+            NSString *inputOptionsString = [NSString stringWithUTF8String:inputOptions];
+            int inputOptionsNum = [inputOptionsString intValue];
             
             
 //Operation 1: Uppercase
-            NSString *uppercaseString = [inputString uppercaseString];
-            
-            NSLog(@"uppercaseString is: %@", uppercaseString);
-            
+            if (inputOptionsNum==1){
+                NSString *uppercaseString = [inputString uppercaseString];
+                NSLog(@"uppercaseString is: %@", uppercaseString);
+            }
 
 //Operation 2: Lowercase
-            NSString *lowercaseString = [inputString lowercaseString];
-            
-            NSLog(@"lowercaseString is: %@", lowercaseString);
+            if (inputOptionsNum==2){
+                NSString *lowercaseString = [inputString lowercaseString];
+                NSLog(@"lowercaseString is: %@", lowercaseString);
+            }
             
 
 //Operation 3: Numberize
-            int numberize = [inputString intValue];
-            NSLog(@"The conversion: %i, was succesful", numberize);
+            if (inputOptionsNum==3){
+                int numberize = [inputString intValue];
+                NSLog(@"The conversion: %i, was succesful", numberize);
+            }
             
 
 //Operation 4: Canadianize
-            NSString *canadianFinish =@" eh?";
-            NSString *canadianizedString = [inputString stringByAppendingString:canadianFinish];
-            NSLog(@"The following string was successfully Canadianized: %@", canadianizedString);
+            if (inputOptionsNum==4){
+                NSString *canadianFinish =@" eh?";
+                NSString *canadianizedString = [inputString stringByAppendingString:canadianFinish];
+                NSLog(@"The following string was successfully Canadianized: %@", canadianizedString);
+            }
             
 
 //Operation 5: Respond
-            NSString *respond = [inputString substringToIndex:[inputString length] - 1];
-            if ([respond hasSuffix:@"?"]){
-                NSLog(@"I don't know");
-            }
-            if ([respond hasSuffix:@"!"]){
-                NSLog(@"Woah Calm Down");
+            if (inputOptionsNum==5){
+                NSString *respond = [inputString substringToIndex:[inputString length] - 1];
+                if ([respond hasSuffix:@"?"]){
+                    NSLog(@"I don't know");
+                }
+                if ([respond hasSuffix:@"!"]){
+                    NSLog(@"Woah Calm Down");
+                }
             }
             
 //Operation 6: De-Space It
-            NSString *despaceIt = [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-            NSLog(@"When it is despaced it will say %@", despaceIt);
+            if (inputOptionsNum==6){
+                NSString *despaceIt = [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"];
+                NSLog(@"When it is despaced it will say %@", despaceIt);
+            }
+        
         }
+        
     }
     return 0;
 }
